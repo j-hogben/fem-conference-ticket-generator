@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+
+    <link rel="stylesheet" href="./src/reset.css" />
+    <link rel="stylesheet" href="./src/styles.css" />
+
+    <script src="./src/script.js" defer></script>
+
+    <title>Frontend Mentor | Conference ticket generator</title>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <header>
+        <img src="./assets/images/logo-full.svg" alt="Coding Conf Logo" />
+      </header>
+
+      <main>
+        <section class="intro">
+          <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
+          <p>Secure your spot at next year's biggest coding conference.</p>
+        </section>
+
+        <form action="">
+          <!-- Drop area form group -->
+          <div class="form-group">
+            <label for="dropAreaInput">Upload Avatar</label>
+            <div class="drop-area">
+              <div class="drop-area__thumb"></div>
+              <span class="drop-area__prompt"></span>
+              <input class="drop-area__input" id="dropAreaInput" type="file" name="myFile" />
+              <div class="drop-area__image-options">
+                <button id="removeImageButton" type="button" onclick="removeImage()">
+                  Remove Image
+                </button>
+                <button id="changeImageButton" type="button" onclick="changeImage()">
+                  Change Image
+                </button>
+              </div>
+            </div>
+            <div class="error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  stroke="#D1D0D5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"
+                />
+                <path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z" />
+                <path
+                  stroke="#D1D0D5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.004 10.462V7.596M8 5.569v-.042"
+                />
+              </svg>
+              <p class="drop-area__error-message"></p>
+            </div>
+          </div>
+
+          <!-- Full name form group -->
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" name="fullName" id="fullName" />
+            <div class="error"></div>
+          </div>
+
+          <!-- Email address form group -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" placeholder="example@email.com" />
+            <div class="error"></div>
+          </div>
+
+          <!-- GitHub username form group -->
+          <div class="form-group">
+            <label for="githubUsername">GitHub Username</label>
+            <input
+              type="text"
+              name="githubUsername"
+              id="githubUsername"
+              placeholder="@yourusername"
+            />
+            <div class="error"></div>
+          </div>
+
+          <!-- Submit form -->
+          <button type="submit">Generate My Ticket</button>
+        </form>
+      </main>
+    </div>
+
+    <!-- Generated tickets starts -->
+
+    <!-- Congrats,  -->
+    <!-- Full Name -->
+    <!-- ! Your ticket is ready. -->
+
+    <!-- We've emailed your ticket to  -->
+    <!-- Email Address -->
+    <!-- and will send updates in the run up to the event. -->
+
+    <!-- Coding Conf
+  Jan 31, 2025 / Austin, TX -->
+
+    <!-- Generated tickets ends -->
+  </body>
+</html>
