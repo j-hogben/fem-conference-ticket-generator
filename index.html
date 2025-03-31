@@ -7,6 +7,13 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./src/reset.css" />
     <link rel="stylesheet" href="./src/styles.css" />
 
@@ -22,8 +29,8 @@
 
       <main>
         <section class="intro">
-          <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
-          <p>Secure your spot at next year's biggest coding conference.</p>
+          <h1 class="text-preset-1">Your Journey to Coding Conf 2025 Starts Here!</h1>
+          <p class="text-preset-4">Secure your spot at next year's biggest coding conference.</p>
         </section>
 
         <form action="">
@@ -32,13 +39,18 @@
             <label for="dropAreaInput">Upload Avatar</label>
             <div class="drop-area">
               <div class="drop-area__thumb"></div>
-              <span class="drop-area__prompt"></span>
+              <span class="drop-area__prompt text-preset-6"></span>
               <input class="drop-area__input" id="dropAreaInput" type="file" name="myFile" />
-              <div class="drop-area__image-options">
+              <div class="drop-area__image-options text-preset-7">
                 <button id="removeImageButton" type="button" onclick="removeImage()">
                   Remove Image
                 </button>
-                <button id="changeImageButton" type="button" onclick="changeImage()">
+                <button
+                  class="white-text"
+                  id="changeImageButton"
+                  type="button"
+                  onclick="changeImage()"
+                >
                   Change Image
                 </button>
               </div>
@@ -96,7 +108,7 @@
           </div>
 
           <!-- Submit form -->
-          <button type="submit">Generate My Ticket</button>
+          <button class="cta-submit" type="submit">Generate My Ticket</button>
         </form>
       </main>
     </div>
