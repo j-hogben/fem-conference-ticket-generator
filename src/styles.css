@@ -12,6 +12,7 @@
   --clr-input-bg: rgba(255, 255, 255, 8%);
   --clr-input-bg-hover: rgba(255, 255, 255, 20%);
 
+  --clr-error: var(--clr-orange-500);
   --clr-gradient-0: #ffffff;
   --clr-gradient-100: #f37362;
 
@@ -76,6 +77,9 @@
   --radius-24: 24px;
   --radius-full: 999px;
 
+  /* INPUT FOCUSSED OUTLINE */
+  --outline-input: 2px solid var(--clr-neut-300);
+
   /* TRANSITION */
   --transition-form: all 150ms ease-in-out;
 }
@@ -93,6 +97,18 @@
 
 .hidden {
   display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ TYPOGRAPHY ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
@@ -243,13 +259,6 @@ form {
   gap: var(--spacing-300);
 }
 
-label,
-.drop-area,
-input,
-button {
-  cursor: pointer;
-}
-
 .form-group {
   display: flex;
   flex-direction: column;
@@ -268,22 +277,6 @@ input {
   transition: var(--transition-form);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  input:hover {
-    background-color: var(--clr-input-bg-hover);
-  }
-}
-
-.error {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-100);
-}
-
-.error:empty {
-  display: none;
-}
-
 /* ~ ~ ~ ~ ~ ~ DROP AREA ~ ~ ~ ~ ~ ~ */
 
 .drop-area {
@@ -295,27 +288,6 @@ input {
   border: 2px dashed var(--clr-neut-500);
   border-radius: var(--radius-input);
   transition: var(--transition-form);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .drop-area:has(.drop-area__prompt:not(:empty)):hover {
-    background-color: var(--clr-input-bg-hover);
-
-    .drop-area__thumb {
-      box-shadow: 0px 2px 4px -2px var(--clr-neut-950);
-    }
-  }
-}
-
-.drop-area__over {
-  background-color: var(--clr-input-bg-hover);
-  outline: 2px solid var(--clr-neut-300);
-  outline-offset: 2px;
-  border-radius: 12px;
-
-  .drop-area__thumb {
-    box-shadow: 0px 2px 4px -2px var(--clr-neut-950);
-  }
 }
 
 .drop-area__thumb {
@@ -335,12 +307,6 @@ input {
   transition: var(--transition-form);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .drop-area__image-options button:hover {
-    background-color: var(--clr-input-bg-hover);
-  }
-}
-
 #removeImageButton {
   text-decoration: underline;
 }
@@ -351,10 +317,6 @@ input {
 }
 
 .drop-area__prompt:empty {
-  display: none;
-}
-
-.drop-area__input {
   display: none;
 }
 
@@ -369,9 +331,82 @@ input {
   transition: var(--transition-form);
 }
 
+/* ~ ~ ~ ~ ~ ~ FORM FOCUS STATES ~ ~ ~ ~ ~ ~ */
+
+label,
+.drop-area,
+input,
+button {
+  cursor: pointer;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .cta-submit:hover {
+  .drop-area:has(.drop-area__prompt:not(:empty)):hover {
+    background-color: var(--clr-input-bg-hover);
+
+    .drop-area__thumb {
+      box-shadow: 0px 2px 4px -2px var(--clr-neut-950);
+    }
+  }
+
+  .drop-area__image-options button:hover {
+    background-color: var(--clr-input-bg-hover);
+  }
+
+  .drop-area__over,
+  .drop-area:has(input:focus-visible),
+  input:focus-visible,
+  .cta-submit:focus-visible {
+    outline: var(--outline-input);
+    outline-offset: 2px;
+  }
+
+  .drop-area__over,
+  .drop-area:has(input:focus-visible),
+  input:focus-visible {
+    background-color: var(--clr-input-bg-hover);
+  }
+
+  .drop-area__over .drop-area__thumb {
+    box-shadow: 0px 2px 4px -2px var(--clr-neut-950);
+  }
+
+  input:hover {
+    background-color: var(--clr-input-bg-hover);
+  }
+
+  .cta-submit:hover,
+  .cta-submit:focus-visible {
     background-color: var(--clr-orange-700);
+  }
+
+  .cta-submit:hover {
     box-shadow: 0px var(--spacing-050) 8px var(--clr-orange-300);
   }
+}
+
+/* ~ ~ ~ ~ ~ ~ FORM ERROR STATES ~ ~ ~ ~ ~ ~ */
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100);
+}
+
+.form-group:has(.error__active) {
+  input {
+    border-color: var(--clr-error) !important;
+  }
+
+  .error svg path {
+    stroke: var(--clr-error);
+  }
+
+  p {
+    color: var(--clr-error) !important;
+  }
+}
+
+.error:empty {
+  display: none;
 }

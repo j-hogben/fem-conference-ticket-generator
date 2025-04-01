@@ -33,14 +33,21 @@
           <p class="text-preset-4">Secure your spot at next year's biggest coding conference.</p>
         </section>
 
-        <form action="">
+        <form id="ticketRegistrationForm" action="">
           <!-- Drop area form group -->
           <div class="form-group">
             <label for="dropAreaInput">Upload Avatar</label>
             <div class="drop-area">
               <div class="drop-area__thumb"></div>
               <span class="drop-area__prompt text-preset-6"></span>
-              <input class="drop-area__input" id="dropAreaInput" type="file" name="myFile" />
+              <input
+                class="drop-area__input sr-only"
+                id="dropAreaInput"
+                type="file"
+                name="myFile"
+                required
+                data-file-size="500000"
+              />
               <div class="drop-area__image-options text-preset-7">
                 <button id="removeImageButton" type="button" onclick="removeImage()">
                   Remove Image
@@ -77,21 +84,31 @@
                   d="M8.004 10.462V7.596M8 5.569v-.042"
                 />
               </svg>
-              <p class="drop-area__error-message"></p>
+              <p class="drop-area__error-message">
+                Upload your photo (JPG or PNG, max size: 500KB).
+              </p>
             </div>
+            <div class="error"></div>
           </div>
 
           <!-- Full name form group -->
           <div class="form-group">
             <label for="fullName">Full Name</label>
-            <input type="text" name="fullName" id="fullName" />
+            <input type="text" name="fullName" id="fullName" required />
             <div class="error"></div>
           </div>
 
           <!-- Email address form group -->
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" name="email" id="email" placeholder="example@email.com" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="example@email.com"
+              required
+              pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+            />
             <div class="error"></div>
           </div>
 
@@ -103,6 +120,7 @@
               name="githubUsername"
               id="githubUsername"
               placeholder="@yourusername"
+              required
             />
             <div class="error"></div>
           </div>
